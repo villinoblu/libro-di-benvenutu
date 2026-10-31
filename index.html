@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Book - Villino Blu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0f223f; color: #ffffff; min-height: 100vh; }
+        
+        .header {
+            background: linear-gradient(135deg, #09172c, #1a365d);
+            padding: 2.5rem 1rem 3rem;
+            text-align: center;
+            position: relative;
+            border-bottom: 2px solid #c5a059;
+        }
+
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            padding: 4px;
+            border-radius: 20px;
+            border: 1px solid #c5a059;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 6px 14px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.active { background: #c5a059; color: #0f223f; }
+
+        .logo img { max-width: 140px; height: auto; margin-bottom: 1rem; }
+        .header h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #ffffff; letter-spacing: 1.5px; }
+        .header p { font-size: 0.95rem; color: #cbd5e0; margin-top: 0.5rem; }
+
+        .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Card con immagine reale di sfondo a copertura totale */
+        .card {
+            position: relative;
+            height: 200px;
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none !important;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.25rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, rgba(15,34,63,0.15) 0%, rgba(15,34,63,0.85) 100%);
+            transition: background 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(197, 160, 89, 0.4);
+            border-color: #c5a059;
+        }
+
+        .card:hover::before {
+            background: linear-gradient(180deg, rgba(15,34,63,0.05) 0%, rgba(15,34,63,0.65) 100%);
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.9);
+        }
+
+        .lang-it { display: none; }
+        .lang-en { display: inline; }
+        body.show-it .lang-it { display: inline; }
+        body.show-it .lang-en { display: none; }
+
+        footer {
+            background: #09172c;
+            color: #a0aec0;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 4rem;
+        }
+        footer a { color: #c5a059; text-decoration: none; }
+    </style>
+</head>
+<body class="show-en">
+
+    <div class="header">
+        <div class="lang-switch">
+            <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" id="btn-it" onclick="setLang('it')">IT</button>
+        </div>
+
+        <div class="logo">
+            <a href="
